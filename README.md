@@ -7,7 +7,7 @@ Sales Dashboard built in Python and the Streamlit library to visualize Excel dat
 - Python
 
 ```bash
-winget install "Python
+winget install "Python"
 ```
 
 > 💡 Note: Make sure python is added to your PATH.
@@ -21,3 +21,9 @@ pip install streamlit pandas openpyxl plotly-express
 - Excel Add-in
 
 Download it from [here.](https://pythonandvba.com/mytoolbelt/)
+
+## Run
+
+```bash
+streamlit run app.py
+```
