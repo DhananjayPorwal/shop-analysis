@@ -5,15 +5,25 @@
 import pandas as pd  # pip install pandas openpyxl
 import plotly.express as px  # pip install plotly
 import streamlit as st  # pip install streamlit
+import time
 
 # Page Title
 st.set_page_config(page_title="Shop Analysis", page_icon="📊", layout="wide")
+
+# Experimental Feature
+
+uploaded_file = st.file_uploader(
+    "Choose your database", accept_multiple_files=False)
+if uploaded_file is not None:
+    file_name = str(uploaded_file.name)
+else:
+    file_name = "DatabaseSample.xlsx"
 
 
 @st.cache
 def get_data_from_excel():
     df = pd.read_excel(
-        io="DatabaseSample.xlsx",
+        io=file_name,
         engine="openpyxl",
         sheet_name="Sheet1",
         usecols="B:R",
@@ -21,6 +31,15 @@ def get_data_from_excel():
     return df
 
 
+# @st.cache
+# def get_data_from_excel():
+#     df = pd.read_excel(
+#         io="DatabaseSample.xlsx",
+#         engine="openpyxl",
+#         sheet_name="Sheet1",
+#         usecols="B:R",
+#     )
+#     return df
 df = get_data_from_excel()
 
 # ---- Sidebar ----
@@ -116,6 +135,13 @@ left_column, right_column = st.columns(2)
 left_column.plotly_chart(fig_month_sales, use_container_width=True)
 right_column.plotly_chart(fig_month_sales_line, use_container_width=True)
 
+# *****Data Entry*****
+st.subheader("Data Entry By Filter:")
+st.dataframe(df_selection)
+
+st.markdown("---")
+
+
 # *****Payment Gateway [Pie Chart]*****
 payment_gateway = df_selection.pivot_table(
     index="Payment_Mode", aggfunc="size")
@@ -138,12 +164,6 @@ left_column, right_column = st.columns(2)
 left_column.plotly_chart(pie_chart_payment, use_container_width=True)
 right_column.plotly_chart(pie_chart_season, use_container_width=True)
 
-st.markdown("---")
-
-
-# *****Data Entry*****
-st.subheader("Data Entry By Filter:")
-st.dataframe(df_selection)
 
 # ---- Hide Streamlit Style ----
 hide_st_style = """
