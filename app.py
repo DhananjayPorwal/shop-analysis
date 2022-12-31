@@ -32,7 +32,6 @@ month = st.sidebar.multiselect(
     default=df["Month"].unique()
 )
 
-# payment,season,
 payment_type = st.sidebar.multiselect(
     "Select the Payment Type:",
     options=df["Payment_Mode"].unique(),
@@ -111,14 +110,36 @@ fig_month_sales_line.update_layout(
     xaxis=(dict(showgrid=False))
 )
 
-# Plot chart
+# Plot chart [Sales by Month and Sales by Month (Line)]
 left_column, right_column = st.columns(2)
 
 left_column.plotly_chart(fig_month_sales, use_container_width=True)
 right_column.plotly_chart(fig_month_sales_line, use_container_width=True)
 
 # *****Payment Gateway [Pie Chart]*****
-# payment_gateway = (
+payment_gateway = df_selection.pivot_table(
+    index="Payment_Mode", aggfunc="size")
+payment_gateway_values = list(payment_gateway)
+payment_gateway_names = ["Cash", "Online"]
+pie_chart_payment = px.pie(values=payment_gateway_values,
+                           names=payment_gateway_names, title="<b>Payment Gateway</b>")
+
+# *****Seasoned Sales [Pie Chart]*****
+seasoned_sales = df_selection.pivot_table(
+    index="Season", aggfunc="size")
+seasoned_sales_values = list(seasoned_sales)
+seasoned_sales_names = ["No", "Yes"]
+pie_chart_season = px.pie(values=seasoned_sales_values,
+                          names=seasoned_sales_names, title="<b>Seasoned Sales</b>")
+
+# Plot chart [Payment Gateway and Seasoned Sales]
+left_column, right_column = st.columns(2)
+
+left_column.plotly_chart(pie_chart_payment, use_container_width=True)
+right_column.plotly_chart(pie_chart_season, use_container_width=True)
+
+st.markdown("---")
+
 
 # *****Data Entry*****
 st.subheader("Data Entry By Filter:")
