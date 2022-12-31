@@ -20,7 +20,6 @@ else:
     file_name = "DatabaseSample.xlsx"
 
 
-@st.cache
 def get_data_from_excel():
     df = pd.read_excel(
         io=file_name,
