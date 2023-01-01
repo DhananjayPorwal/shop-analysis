@@ -15,7 +15,7 @@ st.set_page_config(page_title="Shop Analysis", page_icon="📊", layout="wide")
 uploaded_file = st.file_uploader(
     "Choose your database", accept_multiple_files=False)
 if uploaded_file is not None:
-    file_name = str(uploaded_file.name)
+    file_name = uploaded_file
 else:
     file_name = "DatabaseSample.xlsx"
 
