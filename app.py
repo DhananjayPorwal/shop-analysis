@@ -136,7 +136,7 @@ right_column.plotly_chart(fig_month_sales_line, use_container_width=True)
 
 # *****Data Entry*****
 st.subheader("Data Entry By Filter:")
-st.dataframe(df_selection,use_container_width=True)
+st.dataframe(df_selection)
 
 st.markdown("---")
 
