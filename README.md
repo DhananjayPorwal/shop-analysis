@@ -37,4 +37,7 @@ https://savita-saree.streamlit.app/
 ## Special Thanks 🎊
 
 + [@github/MathCatsAnd](https://github.com/MathCatsAnd)
-  + [Error Fixed](https://discuss.streamlit.io/t/filenotfounderror-this-app-has-encountered-an-error-the-original-error-message-is-redacted-to-prevent-data-leaks-full-error-details-have-been-recorded-in-the-logs-if-youre-on-streamlit-cloud-click-on-manage-app-in-the-lower-right-of-your-app/35421)
+  + Error: [FileNotFoundError](https://discuss.streamlit.io/t/filenotfounderror-this-app-has-encountered-an-error-the-original-error-message-is-redacted-to-prevent-data-leaks-full-error-details-have-been-recorded-in-the-logs-if-youre-on-streamlit-cloud-click-on-manage-app-in-the-lower-right-of-your-app/35421)
+
++ [@streamlit/Goyo](https://discuss.streamlit.io/u/Goyo)
+  + Issue: [DataFrame Issue](https://discuss.streamlit.io/t/ways-to-maximize-dataframe-width-on-streamlit/35493/3)
